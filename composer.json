@@ -1,0 +1,24 @@
+{
+    "name": "adrianyg7/filterer",
+    "description": "Filter Eloquent Models",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Adrián Márquez",
+            "email": "adrianyg7@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "illuminate/support": "~5.0",
+        "illuminate/pagination": "~5.0",
+        "illuminate/database": "~5.0",
+        "illuminate/http": "~5.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Adrianyg7\\Filterer\\": "src/"
+        }
+    },
+    "minimum-stability": "stable"
+}
