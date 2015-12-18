@@ -25,14 +25,14 @@ abstract class Filterer implements BuildsWhenResolved, IteratorAggregate
      *
      * @var string
      */
-    protected $model;
+    public $model;
 
     /**
      * Indicates if the Filterer should be paginated.
      *
      * @var boolean
      */
-    protected $paginate = true;
+    public $paginate = true;
 
     /**
      * Total of results.
@@ -92,28 +92,28 @@ abstract class Filterer implements BuildsWhenResolved, IteratorAggregate
      *
      * @return void
      */
-    protected function init() {}
+    public function init() {}
 
     /**
      * Apply the appropriate filters.
      *
      * @return void
      */
-    protected function filters() {}
+    public function filters() {}
 
     /**
      * Additional columns for your Builder, e.g. geo distance.
      *
      * @return void
      */
-    protected function additionalColumns() {}
+    public function additionalColumns() {}
 
     /**
      * Apply the corresponding order bys.
      *
      * @return void
      */
-    protected function orderBys() {}
+    public function orderBys() {}
 
     /**
      * Return the paginator.

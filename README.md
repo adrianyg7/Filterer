@@ -5,3 +5,4 @@
 - Tests
 - More FiltererModel methods
 - More FiltererRelation methods
+- Artisan command make:filterer
