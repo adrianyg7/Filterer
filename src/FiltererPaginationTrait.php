@@ -15,8 +15,7 @@ trait FiltererPaginationTrait
      */
     protected function totalCount()
     {
-        if ($this->hasAdditionalColumns() and $this->paginate)
-        {
+        if ($this->hasAdditionalColumns() and $this->paginate) {
             $this->total = $this->builder->count();
         }
     }

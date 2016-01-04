@@ -15,13 +15,11 @@ trait FiltererValidationTrait
      */
     protected function validate()
     {
-        if ( ! $this->model or ! class_exists($this->model) )
-        {
+        if ( ! $this->model or ! class_exists($this->model) ) {
             throw new FiltererException('Please set the $model property to your model path.');
         }
 
-        if ( ! $this->isEloquentModel() )
-        {
+        if ( ! $this->isEloquentModel() ) {
             throw new FiltererException('$model property is not an instance of Illuminate\Database\Eloquent\Model');
         }
     }

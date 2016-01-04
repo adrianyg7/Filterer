@@ -35,6 +35,13 @@ abstract class Filterer implements BuildsWhenResolved, IteratorAggregate
     public $paginate = true;
 
     /**
+     * The relations to eager load.
+     *
+     * @var array
+     */
+    public $with = [];
+
+    /**
      * Total of results.
      *
      * @var integer
@@ -78,7 +85,7 @@ abstract class Filterer implements BuildsWhenResolved, IteratorAggregate
     public function build()
     {
         $this->validate();
-        $this->init();
+        $this->eagerLoad();
         $this->filters();
         $this->totalCount();
         $this->additionalColumns();
@@ -87,12 +94,14 @@ abstract class Filterer implements BuildsWhenResolved, IteratorAggregate
     }
 
     /**
-     * Initialize any data to be used over the Filterer,
-     * eager load model relations, etc.
+     * Eager loads the relations.
      *
      * @return void
      */
-    public function init() {}
+    protected function eagerLoad()
+    {
+        $this->builder->with($this->with);
+    }
 
     /**
      * Apply the appropriate filters.
@@ -136,17 +145,6 @@ abstract class Filterer implements BuildsWhenResolved, IteratorAggregate
     }
 
     /**
-     * Eager loads the given relations.
-     *
-     * @param  array|string $relations
-     * @return void
-     */
-    public function with($relations)
-    {
-        $this->builder->with($relations);
-    }
-
-    /**
      * Get the SQL representation of the Filterer query.
      *
      * @return string
@@ -162,7 +160,7 @@ abstract class Filterer implements BuildsWhenResolved, IteratorAggregate
      * @param  string|array  $key
      * @return bool
      */
-    public function has($key)
+    public function requestHas($key)
     {
         return $this->request->has($key);
     }
@@ -188,5 +186,42 @@ abstract class Filterer implements BuildsWhenResolved, IteratorAggregate
     public function getIterator()
     {
         return $this->results->getIterator();
+    }
+
+    /**
+     * Handle dynamic method calls into the filterer model.
+     *
+     * @param  string  $method
+     * @param  array   $parameters
+     * @return mixed
+     */
+    public function __call($method, $parameters)
+    {
+        if (starts_with($method, 'orRelation'))
+        {
+            $method = camel_case(substr($method, 2));
+
+            if ( count($parameters) == 2 ) {
+                $parameters[] = $parameters[1];
+            }
+
+            $parameters[] = 'or';
+
+            return call_user_func_array([$this, $method], $parameters);
+        }
+        else if (starts_with($method, 'or'))
+        {
+            $method = camel_case(substr($method, 2));
+
+            if ( count($parameters) == 1 ) {
+                $parameters[] = $parameters[0];
+            }
+
+            $parameters[] = 'or';
+
+            return call_user_func_array([$this, $method], $parameters);
+        }
+
+        throw new FiltererException("Method [{$method}] does not exists");
     }
 }
