@@ -155,7 +155,7 @@ abstract class Filterer implements BuildsWhenResolved, IteratorAggregate
     }
 
     /**
-     * Determine if the Filterer request contains a non-empty value for an input item.
+     * Determine if the Filterer request contains a non-empty value for the given key.
      *
      * @param  string|array  $key
      * @return bool

@@ -1,0 +1,25 @@
+<?php
+
+namespace DummyNamespace;
+
+use Adrianyg7\Filterer\Filterer;
+
+class DummyClass extends Filterer
+{
+    /**
+     * The Model class to use.
+     *
+     * @var string
+     */
+    public $model = 'dummy:model';
+
+    /**
+     * Apply the appropriate filters.
+     *
+     * @return void
+     */
+    public function filters()
+    {
+        //
+    }
+}

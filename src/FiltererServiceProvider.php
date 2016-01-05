@@ -14,7 +14,7 @@ class FiltererServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->commands('Adrianyg7\Filterer\Console\Commands\FiltererMakeCommand');
     }
 
     /**

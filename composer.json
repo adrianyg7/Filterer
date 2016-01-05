@@ -1,6 +1,12 @@
 {
     "name": "adrianyg7/filterer",
     "description": "Filter Eloquent Models",
+    "keywords": [
+        "filter",
+        "search",
+        "eloquent",
+        "laravel"
+    ],
     "license": "MIT",
     "authors": [
         {
@@ -13,7 +19,8 @@
         "illuminate/support": "~5.0",
         "illuminate/pagination": "~5.0",
         "illuminate/database": "~5.0",
-        "illuminate/http": "~5.0"
+        "illuminate/http": "~5.0",
+        "illuminate/console": "~5.0"
     },
     "require-dev": {
         "mockery/mockery": "0.9.*",
