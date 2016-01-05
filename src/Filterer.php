@@ -42,13 +42,6 @@ abstract class Filterer implements BuildsWhenResolved, IteratorAggregate
     public $with = [];
 
     /**
-     * Total of results.
-     *
-     * @var integer
-     */
-    protected $total;
-
-    /**
      * The Filterer Eloquent Query Builder
      *
      * @var \Illuminate\Database\Eloquent\Builder
@@ -87,8 +80,6 @@ abstract class Filterer implements BuildsWhenResolved, IteratorAggregate
         $this->validate();
         $this->eagerLoad();
         $this->filters();
-        $this->totalCount();
-        $this->additionalColumns();
         $this->orderBys();
         $this->pagination();
     }
@@ -109,13 +100,6 @@ abstract class Filterer implements BuildsWhenResolved, IteratorAggregate
      * @return void
      */
     public function filters() {}
-
-    /**
-     * Additional columns for your Builder, e.g. geo distance.
-     *
-     * @return void
-     */
-    public function additionalColumns() {}
 
     /**
      * Apply the corresponding order bys.
