@@ -9,12 +9,12 @@ Look no more, this package is for you.
 | 5.0.*  | `"adrianyg7/filterer": "1.0.*"`   |
 | Later Laravel 5 versions  | `"adrianyg7/filterer": "1.1.*"` |
 
-** Install this package through Composer.
+#### Install this package through Composer.
 ```shell
 composer require adrianyg7/filterer
 ```
 
-** Register the following Service Provider
+#### Register the following Service Provider
 ```php
 // config/app.php
 
@@ -76,13 +76,6 @@ Route::get('users', function (App\Filterers\UserFilterer $filterer) {
 ```
 Finally, make the request `/users?email=gmail`.
 
-** Filterer implements the `IteratorAggregate` interface; that means, for example, that you can iterate it in your views.
-```php
-@foreach ($filterer as $user)
-    // 
-@endforeach
-```
-
 By default, your results will be paginated. If you want to disable this feature, you can set the `$paginate` property of your Filterer to `false`.
 ```php
 public $paginate = false;
@@ -95,8 +88,16 @@ public $with = [
 ];
 ```
 
+#### Blade
+Filterer implements the `IteratorAggregate` interface; that means, for example, that you can iterate it in your views.
+```php
+@foreach ($filterer as $user)
+    // 
+@endforeach
+```
+
 ## Built-in methods
-** In Model
+#### In Model
 - like
 - equal
 - notEqual
@@ -113,7 +114,7 @@ The second one is the request input key, if you don't provide it, the value of c
 $this->like('email', 'correo_electronico');
 ```
 
-** Relational
+#### Relational
 - relationLike
 - relationEqual
 - relationNotEqual
